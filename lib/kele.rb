@@ -33,4 +33,16 @@ class Kele
         JSON.parse(response.body)
     end    
     
+    def create_submission(checkpoint_id, assignment_branch, assignment_commit_link, comment)
+        response = self.class.post("/checkpoint_submissions", 
+            values: {
+                "checkpoint_id": checkpoint_id, 
+                "assignment_branch": assignment_branch, 
+                "assignment_commit_link": assignment_commit_link, 
+                "comment": comment
+            }, 
+            headers: {authorization: @auth})
+        puts response
+    end    
+    
 end
